@@ -51,4 +51,18 @@ describe("Deve testar as validações", () => {
     const erro = Validador.tamanhoMenorQue("teste", 5, msgErro)
     expect(erro).toBe(msgErro)
   })
+  
+  it("Deve retornar um array de erros", () => {
+    const erroVazio = Validador.naoVazio('', "erro vazio")
+    const erroTamanho = Validador.tamanhoMenorQue("teste", 5, "erro tamanho")
+    const erros = Validador.combinar(erroVazio, erroTamanho)
+    expect(erros?.length).toBeGreaterThan(0)
+  })
+  
+  it("Deve retornar null se não tiver erros", () => {
+    const erroVazio = Validador.naoVazio('ABC', "erro vazio")
+    const erroTamanho = Validador.tamanhoMenorQue("teste", 6, "erro tamanho")
+    const erros = Validador.combinar(erroVazio, erroTamanho)
+    expect(erros).toBeNull()
+  })
 }) 
