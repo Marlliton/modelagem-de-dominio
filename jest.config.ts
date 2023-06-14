@@ -7,7 +7,7 @@ const config: Config = {
   collectCoverage: true,
   testMatch: ["**/__test__/**/*.test.ts"],
   moduleNameMapper: {
-    "@/(.*)": "<rootDir>/src/$1",
+    "@/(.*)$": "<rootDir>/src/$1",
   },
 };
 

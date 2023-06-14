@@ -1,4 +1,4 @@
-test("a", () => {5
+it("a", () => {5
   const a = 1
-  expect(a).toBe(true)
+  expect(a).toBe(1)
 })
