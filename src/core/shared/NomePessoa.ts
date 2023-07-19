@@ -2,8 +2,8 @@ import { Erros } from "../constants/Erros";
 import {Validador} from "../utils/Validador"
 
 export class NomePessoa {
-  constructor(readonly nome: string) {
-    this.nome = nome.trim()
+  constructor(readonly nome?: string) {
+    this.nome = nome?.trim() ?? ""
 
     const erros = Validador.combinar(
       Validador.naoVazio(this.nome, Erros.NOME_VAZIO),
@@ -16,19 +16,19 @@ export class NomePessoa {
     if(erros) throw new Error(erros.join(", "))
   }
 
-  get completo(): string {
+  get completo() {
     return this.nome
   }
 
-  get primeiroNome(): string {
-    return this.nome.split(" ")[0]
+  get primeiroNome() {
+    return this.nome?.split(" ")[0]
   }
 
-  get sobrenomes(): string[] {
-    return this.nome.split(" ").slice(1)
+  get sobrenomes() {
+    return this.nome?.split(" ").slice(1)
   }
 
-  get ultimoNome(): string {
-    return this.nome.split(" ").pop() as string 
+  get ultimoNome() {
+    return this.nome?.split(" ").pop() as string 
   }
 }
