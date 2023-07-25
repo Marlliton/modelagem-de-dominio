@@ -4,6 +4,7 @@ import { NomePessoa } from "@/core/shared/NomePessoa";
 describe("Testar a criação do nome de uma pessoa", () => {
   it("Deve lançar erro ao tentar criar um nome vazio", () => {
     expect(() => new NomePessoa("")).toThrowError(Erros.NOME_VAZIO)
+    expect(() => new NomePessoa()).toThrowError(Erros.NOME_VAZIO)
   })
 
   it("Deve lançar erro ao tentar criar um nome menor que 4 caracteres", () => {
