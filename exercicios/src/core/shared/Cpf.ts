@@ -1,4 +1,5 @@
 import { Erros } from "../constants/Erros";
+import RegiaoCpf from "./RegiaoCPF";
 
 export class Cpf {
   readonly valor: string
@@ -13,6 +14,10 @@ export class Cpf {
 
   get digitoVerificador() {
     return this.valor.slice(9)
+  }
+
+  get regiao() {
+    return RegiaoCpf.porCpf(this.valor)
   }
 
   static isValido(cpf: string) {
